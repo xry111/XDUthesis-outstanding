@@ -1,0 +1,94 @@
+\documentclass[scheme=chinese, a4paper]{ctexart}
+
+\usepackage{hyperref}
+
+% Downgrade titles
+\let\realsection\section
+\let\realsubsection\subsection
+\let\realsubsubsection\subsubsection
+\newcommand\chapter{\realsection}
+\renewcommand\section{\realsubsection}
+\renewcommand\subsection{\realsubsubsection}
+
+% Paper parameters
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.8cm, right=2.8cm}
+\pagestyle{empty}
+
+% Fixed 17pt linespace
+\setlength{\baselineskip}{17pt}
+
+% Misc title settings
+\ctexset{
+	section = {
+		format = {\zihao{-4}\heiti},
+		name = {\hskip 21pt, 、},
+		number = {\chinese{section}},
+	},
+	subsection = {
+		format = {\zihao{5}},
+		titleformat = {\heiti},
+		name = {\hskip 21pt, .},
+		number = {\arabic{subsection}},
+	},
+	subsubsection = {
+		format = {\zihao{5}},
+		titleformat = {\heiti},
+		name = {\hskip 21pt, )},
+		number = {\arabic{subsubsection}},
+		beforeskip = 0.1pt,
+		afterskip = 0.1pt,
+	},
+	% For abstract and key words.
+	% Do NOT use \paragraph for other purpose.
+	paragraph={
+		format = {\sffamily},
+		afterskip = 0pt,
+		beforeskip = 0pt,
+	},
+}
+
+% Small caption
+\usepackage{caption}
+\captionsetup{font={small}}
+
+% Bibliography
+\usepackage[numbers,super,square,sort&compress]{natbib}
+\addtolength{\bibsep}{-0.5 em}
+\renewcommand{\bibfont}{\small}
+\renewcommand\bibsection{\subsection*{参考文献}}
+
+\begin{document}
+
+% Title and author
+\begin{center}
+\heiti
+{\zihao{2} 假装自己是优秀论文}  % Title
+\\[14.5pt]
+\begin{tabular}{rl}
+空间科学与技术专业   % Major
+&
+席若尧  % Author
+\\
+指\ 导\ 教\ 师
+&
+谢楷  % Mentor
+\end{tabular}
+\end{center}
+
+% Abstract
+
+\paragraph{[摘\ 要]\ } 这是摘要。
+\paragraph{[关键词]\ } 关键词1\ 关键词2\ 关键词3
+\\
+\paragraph{[Abstract]\ } This is abstract.
+\paragraph{[Key Words]\ } Key word 1 \quad Key word 2 \quad Key word 3
+
+\renewcommand\paragraph{} % Do not use \paragraph any more.
+
+\input{1000-Intro.tex}
+
+\bibliographystyle{XDUbibunsrt}
+\bibliography{RefFile}
+
+\end{document}
